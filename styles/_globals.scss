@@ -1,0 +1,75 @@
+@mixin mq($size) {
+    @media screen and (min-width:$size){
+        @content;
+    }
+}
+@mixin bg($image, $size){
+    @include mq($lgScreen){
+
+    }
+}
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+html,body{
+    font-family: $font-open-sans;
+    font-size:16px;
+    @include mq($lgScreen){
+        background: url("../images/bg-desktop.svg") no-repeat center center/cover, $color-secondary;
+    }
+    background: url("../images/bg-mobile.svg") no-repeat top center/contain, $color-secondary;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color:$color-primary;
+}
+p{
+    font-family: $font-open-sans;
+    color:$color-primary;
+}
+h1,h2{
+    font-family: $font-poppins;
+    color:$color-primary;
+}
+img{
+    width:100%;
+}
+/**BUTTONS*/
+.btn{
+    border:none;
+    outline: none;
+    padding:0.6rem;
+}
+.btn-primary{
+    text-align:center;
+    min-width:14rem;
+    border-radius:1.6rem;
+    background-color: $color-primary;
+    color:$color-secondary;
+    transition: transform .3s ease;
+}
+.btn-primary:hover{
+    background-color: $color-alt;
+    transition: background-color .6s ease;
+    animation: buttonAnim .4s ease;
+}
+
+@keyframes buttonAnim{
+    0%{
+        transfrom:rotate(1deg);
+    }
+    25%{
+        transform:rotate(1deg);
+    }
+    75%{
+        transform: rotate(-2deg);
+    }
+    100%{
+        transform: rotate(-1deg);
+    }
+}
